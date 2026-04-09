@@ -1,49 +1,439 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Shloka App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366F1;
+            --primary-light: #818CF8;
+            --primary-soft: #EEF2FF;
+            --accent: #F59E0B;
+            --accent-soft: #FFFBEB;
+            --bg: #F8F9FF;
+            --bg-white: #FFFFFF;
+            --text-dark: #1E1B4B;
+            --text-body: #4B5563;
+            --text-muted: #9CA3AF;
+            --border: #E5E7EB;
+            --border-soft: #EDE9FE;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-body);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 56px 24px 80px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--primary-soft);
+            border: 1px solid #C7D2FE;
+            border-radius: 100px;
+            padding: 5px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .header h1 {
+            font-size: clamp(30px, 5vw, 44px);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1 span {
+            color: var(--primary);
+        }
+
+        .header .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .effective-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 16px;
+            background: var(--accent-soft);
+            border: 1px solid #FDE68A;
+            border-radius: 8px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            color: #92400E;
+            font-weight: 500;
+        }
+
+        /* Intro */
+        .intro-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-soft);
+            border-left: 4px solid var(--primary);
+            border-radius: 14px;
+            padding: 22px 26px;
+            margin-bottom: 32px;
+        }
+
+        .intro-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-body);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 36px 0;
+        }
+
+        /* Section cards */
+        .section-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px 28px;
+            margin-bottom: 16px;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .section-card:hover {
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+            border-color: #C7D2FE;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .section-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            background: var(--primary-soft);
+        }
+
+        .section-meta {
+            flex: 1;
+        }
+
+        .section-number {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--primary-light);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .section-card h2 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .section-card p {
+            font-size: 14.5px;
+            line-height: 1.75;
+            color: var(--text-body);
+        }
+
+        /* List */
+        .policy-list {
+            list-style: none;
+        }
+
+        .policy-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 9px 0;
+            font-size: 14.5px;
+            color: var(--text-body);
+            line-height: 1.6;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .policy-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .policy-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+
+        /* Contact card */
+        .contact-card {
+            background: linear-gradient(135deg, #EEF2FF, #F5F3FF);
+            border: 1px solid #C7D2FE;
+            border-radius: 16px;
+            padding: 32px 28px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            border-radius: 10px;
+            padding: 11px 22px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .email-link:hover {
+            background: #4F46E5;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .footer p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container { padding: 36px 16px 56px; }
+            .section-card { padding: 20px 18px; }
+            .intro-card { padding: 18px 18px; }
+            .contact-card { padding: 24px 18px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Privacy Policy</h1>
-    <p>Effective Date: April 2026</p>
 
-    <p>Shloka App ("we", "our", "us") respects your privacy. This Privacy Policy explains how we collect, use, and protect your information.</p>
+    <div class="container">
 
-    <h2>1. Information We Collect</h2>
-    <ul>
-        <li>Basic user information (if provided)</li>
-        <li>App usage data</li>
-        <li>Device information</li>
-    </ul>
+        <!-- Header -->
+        <div class="header">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Legal Document
+            </div>
+            <h1>Privacy <span>Policy</span></h1>
+            <p class="subtitle">Your privacy matters to us. Here's how we handle your data.</p>
+            <div class="effective-date">
+                📅 &nbsp;Effective Date: April 2026
+            </div>
+        </div>
 
-    <h2>2. How We Use Information</h2>
-    <ul>
-        <li>To improve app performance</li>
-        <li>To personalize user experience</li>
-        <li>To provide app features</li>
-    </ul>
+        <!-- Intro -->
+        <div class="intro-card">
+            <p>
+                <strong style="color: var(--text-dark);">Shloka App</strong> ("we", "our", "us") respects your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our application.
+            </p>
+        </div>
 
-    <h2>3. Third-Party Services</h2>
-    <p>We may use third-party services such as:</p>
-    <ul>
-        <li>Google Play Services</li>
-        <li>Firebase Analytics</li>
-    </ul>
+        <div class="divider"></div>
 
-    <h2>4. Data Security</h2>
-    <p>We implement appropriate security measures to protect your data.</p>
+        <!-- Section 1 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">🗂️</div>
+                <div class="section-meta">
+                    <div class="section-number">Section 01</div>
+                    <h2>Information We Collect</h2>
+                </div>
+            </div>
+            <ul class="policy-list">
+                <li>Basic user information (if provided)</li>
+                <li>App usage data</li>
+                <li>Device information</li>
+            </ul>
+        </div>
 
-    <h2>5. Children's Privacy</h2>
-    <p>Our app does not knowingly collect data from children under 13.</p>
+        <!-- Section 2 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">⚙️</div>
+                <div class="section-meta">
+                    <div class="section-number">Section 02</div>
+                    <h2>How We Use Information</h2>
+                </div>
+            </div>
+            <ul class="policy-list">
+                <li>To improve app performance</li>
+                <li>To personalize user experience</li>
+                <li>To provide app features</li>
+            </ul>
+        </div>
 
-    <h2>6. User Rights</h2>
-    <p>Users can request data deletion by contacting us.</p>
+        <!-- Section 3 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">🔗</div>
+                <div class="section-meta">
+                    <div class="section-number">Section 03</div>
+                    <h2>Third-Party Services</h2>
+                </div>
+            </div>
+            <p style="margin-bottom: 12px;">We may use third-party services such as:</p>
+            <ul class="policy-list">
+                <li>Google Play Services</li>
+                <li>Firebase Analytics</li>
+            </ul>
+        </div>
 
-    <h2>7. Changes to This Policy</h2>
-    <p>We may update this policy from time to time.</p>
+        <!-- Section 4 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">🔒</div>
+                <div class="section-meta">
+                    <div class="section-number">Section 04</div>
+                    <h2>Data Security</h2>
+                </div>
+            </div>
+            <p>We implement appropriate security measures to protect your data from unauthorized access, alteration, disclosure, or destruction.</p>
+        </div>
 
-    <h2>8. Contact Us</h2>
-    <p>Email: yk.ragula1@gmail.com</p>
+        <!-- Section 5 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">🧒</div>
+                <div class="section-meta">
+                    <div class="section-number">Section 05</div>
+                    <h2>Children's Privacy</h2>
+                </div>
+            </div>
+            <p>Our app does not knowingly collect data from children under the age of 13. If you believe we have inadvertently collected such data, please contact us immediately.</p>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">🛡️</div>
+                <div class="section-meta">
+                    <div class="section-number">Section 06</div>
+                    <h2>User Rights</h2>
+                </div>
+            </div>
+            <p>Users can request data deletion or access to their personal data by contacting us. We are committed to honoring your privacy rights.</p>
+        </div>
+
+        <!-- Section 7 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">🔄</div>
+                <div class="section-meta">
+                    <div class="section-number">Section 07</div>
+                    <h2>Changes to This Policy</h2>
+                </div>
+            </div>
+            <p>We may update this policy from time to time. Any changes will be reflected on this page with an updated effective date. We encourage you to review this policy periodically.</p>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-card">
+            <div style="font-size: 28px; margin-bottom: 12px;">✉️</div>
+            <h2>Contact Us</h2>
+            <p>Have questions about this policy? We'd love to hear from you.</p>
+            <a href="mailto:k.ragula1@gmail.com" class="email-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                k.ragula1@gmail.com
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">🕉️ Shloka App</div>
+            <p>© 2026 Shloka App. All rights reserved.</p>
+        </div>
+
+    </div>
 
 </body>
 </html>
